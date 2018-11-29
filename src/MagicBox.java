@@ -80,7 +80,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener, MouseMo
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("XPOS:" + e.getX() + ", YPOS:" + e.getY());
+		//System.out.println("XPOS:" + e.getX() + ", YPOS:" + e.getY());
 		if(e.getX() >= 184 && e.getX() <= 213 && e.getY() >= 506 && e.getY() <= 546) {
 			System.out.println("test");
 			}
@@ -119,9 +119,9 @@ public class MagicBox extends JPanel implements Runnable, MouseListener, MouseMo
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getX() >= 184 && e.getX() <= 213 && e.getY() >= 506 && e.getY() <= 546) {
-			System.out.print("test");
-			}
+		//if(e.getX() >= 184 && e.getX() <= 213 && e.getY() >= 506 && e.getY() <= 546) {
+		//	System.out.print("test");
+		//	}
 	}
 
 }
