@@ -3,8 +3,6 @@ ArrayList <Car> cars = new ArrayList <Car>();
 boolean canMove = true;
 
 float fSize = 30;
-float R = fSize/2;
-float sY = fSize + R;
 
 float fJump = 10;
 
@@ -17,20 +15,26 @@ void setup(){
   //car = new Car(width - 50 , 50, 70, 2);
   
   for(int k = 0; k < 4; k++){
-   cars.add(new Car(width - 50 , k * 60, 70, 2));
+   cars.add(new Car(width, k * 60 + 100, 70, random(5,10)));
   }
 }
 
 Car car;
 
 void draw(){
-  
-  
-  
   background(60,20,100);
   
+  rect(0,0,width,height/7);
+  
+ fill(255); 
+ rect(fxPos - fSize/2, fyPos - fSize/2, fSize, fSize);
+ 
   fill(0, 200, 50);
 ellipse(fxPos, fyPos, fSize, fSize);
+
+
+  
+
 
 Cage();
 
@@ -38,6 +42,13 @@ for(int k = 0; k < cars.size(); k++){
  Car c = cars.get(k);
   c.move();
   c.display();
+  c.tp();
+  if(fxPos > c.x && fxPos < c.x + c.size){
+    if(fyPos + fSize/2 > c.y && fyPos - fSize/2 < c.y + 50){
+   System.out.println("hit"+k);
+   fill(255,0,0);
+    }
+  }
 }
 
 }
@@ -101,6 +112,12 @@ void keyReleased(){
   }
   void move(){
   x -= speed; 
+  }
+  
+  void tp (){
+   if(x < -size){
+    x = width; 
+   }
   }
   
  }
