@@ -4,7 +4,7 @@ boolean canMove = true;
 
 float fSize = 30;
 
-float fJump = 10;
+float fJump = 35 / 2;
 
 float fxPos = 200;
 float fyPos = 380;
@@ -15,7 +15,7 @@ void setup(){
   //car = new Car(width - 50 , 50, 70, 2);
   
   for(int k = 0; k < 4; k++){
-   cars.add(new Car(width, k * 60 + 100, 70, random(5,10)));
+   cars.add(new Car(width, k * 75 + height/7, 70, random(5,10)));
   }
 }
 
@@ -26,8 +26,8 @@ void draw(){
   
   rect(0,0,width,height/7);
   
- fill(255); 
- rect(fxPos - fSize/2, fyPos - fSize/2, fSize, fSize);
+// //fill(255); 
+// //rect(fxPos - fSize/2, fyPos - fSize/2, fSize, fSize);
  
   fill(0, 200, 50);
 ellipse(fxPos, fyPos, fSize, fSize);
@@ -45,8 +45,12 @@ for(int k = 0; k < cars.size(); k++){
   c.tp();
   if(fxPos > c.x && fxPos < c.x + c.size){
     if(fyPos + fSize/2 > c.y && fyPos - fSize/2 < c.y + 50){
-   System.out.println("hit"+k);
-   fill(255,0,0);
+   System.out.println("hit" + k);
+   
+   for(int poop = 0; poop < 10; poop++){
+   canMove = false;
+   poop--;
+   }
     }
   }
 }
@@ -86,6 +90,9 @@ void keyPressed(){
       canMove = false;
 }
 
+
+
+
 void keyReleased(){
  canMove = true;
 }
@@ -107,7 +114,7 @@ void keyReleased(){
   
   void display(){
    fill(0,255,0);
-   rect(x, y, size, 50);
+   rect(x, y, size, 45);
    
   }
   void move(){
@@ -117,6 +124,7 @@ void keyReleased(){
   void tp (){
    if(x < -size){
     x = width; 
+    speed = random(5,10);
    }
   }
   
