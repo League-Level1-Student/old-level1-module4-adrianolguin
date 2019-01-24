@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
+import sun.text.normalizer.ReplaceableString;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,28 +32,45 @@ public class LeetSpeakTranslator implements ActionListener {
 	panel.add(input);
 	panel.add(output);
 	frame.pack();
-
+	button.setEnabled(true);
+	button.addActionListener(this);
+	
 	 }
-	
-	
 
 	public static void main(String[] args) {
 
 		LeetSpeakTranslator translator = new LeetSpeakTranslator();
 		translator.createGUI();
 		
+		
+		
+		
 }
 
 
-
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 
-		
-		
-	}
+	String loading = input.getText();
+	
+	loading = loading.replace('a', '4');
+	
+	loading = loading.replace('A', '@');
+	
+	loading = loading.replace('e', '3');
+	
+	loading = loading.replace('E', '3');
+	
+	loading = loading.replace('i', '1');
+	
+	loading = loading.replace('o', '0');
+	
+	loading = loading.replace('s', '$');	
+	
+	output.setText(loading);
 
 
 
 	
+}
 }
